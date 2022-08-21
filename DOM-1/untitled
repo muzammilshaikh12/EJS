@@ -1,0 +1,2 @@
+3.Text content does not pay the attention to styling even with the style if we display none but still after consoling with text content the complete HTML is printed
+where as innerHTML pays attention to style and after printing it gives an output in accordance to the style.
