@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    
+</head>
+
+
+<body>
+    
+    <form onsubmit="savetoLocalstorage(event)">
+        <h2 style="text-align:center;color:tomato">Book a Call</h2>
+        <h5 style="text-align:center">Book a call slot and out representative will call you within 1hr of selected time</h5>
+        <hr width="100%" size="4px">
+        <div class="wrapper">
+            <div class="input">
+                <label  for:"fullname" style="text-align:left">Name:</label><br>
+                <input id="name" type="text"    required><br><br>
+                <label for:"email">Email:</label><br>
+                <input type="email"  id="emailID"  required><br><br>
+                <label for="quantity">Phone:</label><br>
+                <input id="phone" required><br><br>
+                <label for="call-time">Time for Call:</label><br>
+            </div>
+              <div class="date">
+                  <input id="date" type="date" required> <input id="time" type="time" required>  <br><br>
+                  <button>Submit</button>
+              </div>
+            </form>
+             
+            <ul id="ul"></ul>
+            <script> 
+
+            function savetoLocalstorage(event) {
+                event.preventDefault();
+            let userDetails = {
+                Name : document.getElementById('name').value,
+                Email : document.getElementById('emailID').value,
+                Number :document.getElementById('phone').value,
+                Date : document.getElementById('date').value,
+                Time : document.getElementById('time').value
+            }
+
+            let userDetails_serialized=JSON.stringify(userDetails)
+            removeUserfromScreen(userDetails)
+            localStorage.setItem(userDetails.Email , userDetails_serialized)
+            showNewUseronScreen(userDetails)
+            
+            // let userDetails_deserialized=localStorage.getItem(userDetails.Email)
+
+            // console.log(userDetails_deserialized)
+          }
+            function showNewUseronScreen(user){
+             const d=document.getElementById('ul')
+             const li= `<li id="${user.Email}"> ${user.Name} - ${user.Email} - ${user.Number} - ${user.Date} - ${user.Time} 
+              <button onclick = "editUser('${user.Email}','${user.Name}','${user.Number}','${user.Date}','${user.Time}')"> Edit </button> 
+              <button onclick = "deleteUser('${user.Email}')"> Delete </button> 
+               </li>`
+            
+           d.innerHTML = d.innerHTML + li 
+          
+          }
+           function removeUserfromScreen(user) {
+            let parent = document.getElementById('ul')
+             
+            let child=document.getElementById(user.Email)
+
+ 
+            if(child) {
+              parent.removeChild(child)
+            }
+           }
+       
+          function deleteUser(Email) {
+          
+            let tobeDeletedEmail=document.getElementById(Email)
+            let newparent1 = document.getElementById('ul')
+            newparent1.removeChild(tobeDeletedEmail)
+            localStorage.removeItem(Email)
+           
+          }
+             function editUser(Email,Name,Number,Date,Time) {
+              document.getElementById('emailID').value = Email;
+              document.getElementById('name').value = Name;
+              document.getElementById('phone').value = Number;
+              document.getElementById('date').value = Date;
+              document.getElementById('time').value = time;
+
+              deleteUser(Email)
+             }
+             </script>
+         
+
+          // <!-- <script>
+          //   function savetoLocalstorage(){
+                
+          //   // event.preventDefault();
+          //   const  name = document.getElementById('name').value
+          //   const email = document.getElementById('emailID').value
+          //   const phone = document.getElementById('phone').value
+          //   // const date = event.target.date.value;
+          //   // const time = event.target.time.value;
+          //   localStorage.setItem('name', name);
+          //   localStorage.setItem('email', email);
+          //   localStorage.setItem('phone', phone);
+          //   // localStorage.setItem('Date', date);
+          //   // localStorage.setItem('time', time);
+          //   }
+          //   // savetoLocalstorage()
+          // </script> -->
+          // <!-- <script>
+          //   function savetoLocalstorage(event){
+                
+          //   event.preventDefault();
+          //   console.log(event)
+          //   const  name = document.getElementById('name').value
+          //   const email = document.getElementById('emailID').value
+          //   const phone = document.getElementById('phone').value
+          //   const date = document.getElementById('date').value
+          //   const time = document.getElementById('time').value
+          //   localStorage.setItem('name', name);
+          //   localStorage.setItem('email', email);
+          //   localStorage.setItem('phone', phone);
+          //   localStorage.setItem('Date', date);
+          //   localStorage.setItem('time', time);
+          //   }
+
+           
+          //   // savetoLocalstorage()
+          // </script> -->
+        </div>
+</body>
+</html>

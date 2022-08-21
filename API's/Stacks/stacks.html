@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Stacks</h1>
+
+    <script>
+        class Stack {
+            constructor() {
+                this.item=[]
+                this.count=0
+            }
+
+            push(element) {
+                this.item[this.count] = element;
+                console.log(`${element} was added to ${this.count} position`)
+                this.count++
+                return this.count-1;
+            }
+
+            pop() {
+                if(this.count === 0) return undefined;
+                let deleteitem=this.item[this.count-1]
+                this.count -= 1
+                console.log(`${deleteitem} removed`)
+                return deleteitem
+            }
+
+            peek() {
+                console.log(`Top element is ${this.item[this.count-1]}`)
+                return this.item[this.count-1]
+    
+            }
+
+            isEmpty() {
+                console.log((this.count === 0)? 'Stack is Empty' : 'Stack is not empty')
+                return this.count == 0
+            }
+
+            checkSize() {
+                console.log(`Elements in the stacks are ${this.count}`)
+                return this.count
+            }
+
+            printStack() {
+                let str=' '
+                for(let i=0;i<this.count;i++) {
+                    str += this.item[i] + ' '
+                    
+                }
+                console.log(str)
+                return str
+            }
+
+            clear() {
+                this.item=[]
+                this.count = 0
+                console.log(`Stack is cleared`)
+                return this.item
+            }
+        }
+
+        const stack=new Stack()
+
+        stack.isEmpty()
+        stack.checkSize()
+        stack.push(100)
+        stack.push(200)
+        stack.peek()
+        stack.push(300)
+        stack.printStack()
+        stack.isEmpty()
+        stack.pop()
+        stack.pop()
+        stack.checkSize()
+        stack.clear()
+    </script>
+</body>
+</html>

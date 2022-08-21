@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Call Backs</h1>
+    <script>
+     const posts=[
+        {title:'Post-One',body:'This is the first post',createdAt:new Date().getTime()},
+        {title:'Post-Two',body:'This is the second post',createdAt:new Date().getTime()}
+     ]
+       let intervalId=0
+     function printpost() {
+        clearInterval(intervalId)
+        setInterval(()=>{
+            setTimeout(()=>{
+          let output=''
+          for(let i=0;i<posts.length;i++) {
+            output += `<li>${posts[i].title}  last updated  ${(new Date().getTime()-posts[i].createdAt)/1000} seconds ago</li>`
+          }
+          document.body.innerHTML = output
+        },2000)
+        })
+        
+     }
+      printpost()
+
+      function createposts(post,callback) {
+        setTimeout(() => {
+            posts.push({...post,createdAt:new Date().getTime()})
+            callback()
+        },3000)
+      }
+      createposts({title:'Post-Three',body:'This is the third post'},printpost)
+
+      function create4thpost(post,callback) {
+        setTimeout(() => {
+            posts.push({...post,createdAt:new Date().getTime()})
+            callback()
+        },4000)
+      }
+    create4thpost({title:'Post-Four',body:'This is the fourth post'},printpost)
+    </script>
+</body>
+</html>

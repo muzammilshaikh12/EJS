@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <style>
+        #container {
+            position: relative;
+            background-color: rgb(180, 180, 233);
+            height: 450px;
+            width: 450px;
+            /* display: flex; */
+            /* align-items: center; */
+            /* left: 330px;
+            top: 110px */
+        }
+
+        #player {
+            position: absolute;
+            background-color: rgb(0, 0, 0);
+            height: 30px;
+            width: 30px;
+            border-radius: 2px;
+            z-index: 10;
+        }
+
+        #reward {
+            position: absolute;
+            background-color: gold;
+            height: 30px;
+            width: 30px;
+            border-radius: 30px;
+        }
+
+        #points {
+            position: relative;
+            background-color: rgb(217, 7, 7);
+            height: 50px;
+            width: 450px;
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+            color: white;
+            justify-content: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="player"></div>
+        <div id="reward"></div>
+    </div>
+    <div id="points">0</div>
+
+    <script>
+        let points = 0;
+        let playerPosX = 0;
+        let playerPosY = 0;
+        let playerVelocityX = 30;
+        let playerVelocityY = 0;
+        let rewardPosX = 0;
+        let rewardPosY = 0;
+
+        let player = document.getElementById('player');
+        // console.log(player)
+        let reward = document.getElementById('reward');
+        let pointsDiv = document.getElementById('points')
+        document.onkeydown = playerDirection;
+        function playerDirection(event) {
+
+            if (event.keyCode == 37) {
+                playerVelocityX = -30;
+                playerVelocityY = 0;
+            }
+            if (event.keyCode == 38) {
+                playerVelocityX = 0;
+                playerVelocityY = -30;
+            }
+            if (event.keyCode == 39) {
+                playerVelocityX = 30;
+                playerVelocityY = 0;
+            }
+            if (event.keyCode == 40) {
+                playerVelocityX = 0;
+                playerVelocityY = 30;
+            }
+
+        }
+
+
+        function movePlayer() {
+
+            if (playerPosX == rewardPosX && playerPosY == rewardPosY) {
+                points++;
+                displayPoints();
+                renderReward();
+
+            }
+
+            if (playerPosX > 420) {
+                alert(`Game Over Your Score is ${points}`)
+                displayPoints();
+                playerPosX = 0;
+            }
+            if (playerPosY > 420) {
+                alert(`Game Over Your Score is ${points}`)
+                displayPoints();
+                playerPosX = 0;
+            }
+            if (playerPosX < 0) {
+                alert(`Game Over Your Score is ${points}`)
+                displayPoints();
+                playerPosX = 0;
+            }
+            if (playerPosY < 0) {
+                alert(`Game Over Your Score is ${points}`)
+                displayPoints();
+                playerPosX = 0;
+            }
+
+
+
+
+
+            playerPosX = playerPosX + playerVelocityX;
+            playerPosY = playerPosY + playerVelocityY;
+
+            player.style.left = playerPosX + 'px';
+            player.style.top = playerPosY + 'px';
+        }
+        
+        setInterval(movePlayer, 100);
+
+        function renderReward() {
+            rewardPosX = (Math.floor(Math.random() * 14) * 30)
+            rewardPosY = (Math.floor(Math.random() * 14) * 30)
+
+            reward.style.left = rewardPosX + 'px'
+            reward.style.top = rewardPosY + 'px'
+
+
+
+        }
+        renderReward()
+        function displayPoints() {
+            pointsDiv.innerHTML = points;
+        }
+
+
+    </script>
+</body>
+
+</html>

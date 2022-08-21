@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         const posts=[
+            {title:'Post-One',body:'This is the post one'},
+            {title:'Post-Two',body:'This is the post two'}
+        ]
+         
+        function getposts() {
+                setTimeout(() => {
+                let output=''
+               for(let i=0;i<posts.length;i++) {
+                output += `<li>${posts[i].body} </li>`
+               }
+                document.body.innerHTML = output
+            },1000)
+        }
+            
+        
+
+        
+        
+        function createPosts(post) {
+            return new Promise((resolve,reject)=>{
+                setTimeout(() =>{
+        posts.push(post);
+        const error=false
+        if(!error) {
+            resolve("I am Muzammil");
+        } else {
+            reject('Error:Something went wrong')
+        }
+        },1000)
+            })
+           
+        }
+
+        createPosts({title:'Post-Three',body:'This is the third post'})
+        .then(()=> {
+            getposts()
+                deleteposts().then(()=>{
+                getposts()
+            
+            })
+           
+        })
+        .catch(err => console.log(err))
+
+        
+
+        function deleteposts() {
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    const error= (posts.length === 0)
+                    if(!error) {
+                        posts.pop();
+                        resolve()
+                    } else {
+                        reject(alert('Array is Empty'))
+                    }
+                },1000)
+            })
+        }
+       
+      function updateLastActivityTime() {
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                posts.lastactivitytime=new Date().getTime();
+                resolve(posts.lastactivitytime)
+            },1000)
+        })
+      }
+        
+      deleteposts()
+      deleteposts()
+      deleteposts()
+    //   function userUpdatesapost() {
+    //     Promise.all([createPosts({title:'Post-Fourth',body:'This is the third post'}),updateLastActivityTime()]).then(([createdpost,lasttime])=>{
+    //         console.log(createdpost)
+    //         console.log(lasttime)
+    //     })
+    //     .catch(err=>console.log(err))
+    //   }
+        
+        // userUpdatesapost()
+        
+  
+    //   console.log(posts)
+      
+        
+        
+        
+       
+       
+        
+    </script>
+</body>
+</html>

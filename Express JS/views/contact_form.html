@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <style>
+      div {
+        display: flex;
+        flex-direction: column;
+      }
+
+      form {
+        text-align: center;
+        border: 2px solid rgb(16, 156, 70);
+        margin: 3rem 35rem;
+        background-color: rgb(216, 241, 221);
+        border-radius: 5px;
+      }
+      button {
+        margin-top: 1rem;
+      }
+      body {
+        padding: 0;
+        margin: 0;
+        font-family: "Lucida Sans";
+      }
+      .main-header {
+        width: 100%;
+        height: 56px;
+        background-color: rgb(27, 175, 64);
+        padding: 0 1.5rem;
+      }
+
+      .main-nav {
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      .itemlist {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+      }
+
+      .items {
+        padding: 0;
+        margin: 0 1rem;
+      }
+
+      .items a {
+        text-decoration: none;
+        color: whitesmoke;
+      }
+
+      .items a:hover,
+      .items a:active,
+      .items a.active {
+        color: rgb(0, 0, 0);
+      }
+
+      button {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <nav class="main-nav">
+        <ul class="itemlist">
+          <li class="items"><a href="/">Shop</a></li>
+          <li class="items"><a href="/add-product">Add Product</a></li>
+          <li class="items"><a href="/products">Product</a></li>
+          <li class="items">
+            <a href="/contactus" class="active">Contact Us</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <form action="/success" method="POST">
+      <label>Book a Call</label><br />
+      <br />
+      <div>
+        <label>Name</label>
+        <input type="text" />
+        <label>Email Id</label>
+        <input type="email" />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

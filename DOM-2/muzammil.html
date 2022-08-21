@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1.0">, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <button id="button">Submit</button>
+
+    <script>
+// Javascript is single threaded synchronous,but it can be used as asynchronous with help of certain functions
+// function b() {
+//     let a = document.getElementById("button")
+   
+// let count=1;
+//     a.addEventListener("click" , function abc(){
+//         console.log('clicked me',count++)
+//     })
+//     }
+//     b()
+class Student{
+
+static    count = 0;
+constructor(name,age,number,marks) {
+    this.name =  name;
+    this.age = age;
+    this.number= number;
+    this.marks=marks;
+}
+
+static countStudent() {
+   
+    return (Student.count++);
+}
+
+checkEligibility() {
+    if(this.marks > 40) {
+        console.log(`${this.name} is eligible for college`)
+    } if(this.marks < 40){
+        console.log(`${this.name} is not eligible for college`)
+    }
+}
+
+eligibleForPlacement(min_marks) {
+   
+    return (min_age) => {
+        
+        if(this.marks > min_marks && this.age > min_age) {
+             
+            console.log(this.name,'is eligible for placements.');
+        }
+       
+    
+    }
+    
+
+    
+}
+}
+
+let student1 = new Student('AK',23,12345,45)
+let student2 = new Student('CD',24,12545,55)
+let student3 = new Student('EF',18,12745,35)
+let student4 = new Student('GH',17,18345,65)
+let student5 = new Student('IJ',21,92345,75)
+
+console.log(Student.countStudent());
+
+student1.checkEligibility()
+student2.checkEligibility()
+student3.checkEligibility()
+student4.checkEligibility()
+student5.checkEligibility()
+student1.eligibleForPlacement(50)(18)
+student2.eligibleForPlacement(50)(18)
+student3.eligibleForPlacement(50)(18)
+student4.eligibleForPlacement(50)(18)
+student5.eligibleForPlacement(50)(18)
+
+    </script>
+</body>
+</html>

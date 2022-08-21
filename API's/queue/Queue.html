@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Queue</h1>
+    <script>
+        class Queue{
+            constructor() {
+                this.top=null
+                this.bottom=null
+                this.storage={}
+            }
+
+            enqueue(value) {
+                this.storage[this.top] = value
+                this.top++
+                console.log(`${value} was added to ${this.top} position`)
+                
+            }
+
+            dequeue() {
+                if(!this.isEmpty()) {
+                let deleteitem=this.storage[this.bottom]
+                delete this.storage[this.bottom]
+                this.bottom++
+                console.log(`${deleteitem} was removed from ${this.bottom} positiom`)
+                return deleteitem
+                }
+            }
+
+            peek() {
+                console.log(this.storage[this.top-1])
+            }
+
+            size() {
+                console.log(this.top-this.bottom)
+            }
+
+            isEmpty() {
+                if(this.size === 0) {
+                console.log('Queue is Empty')
+                } else console.log('Queue is not empty')
+            }
+        }
+
+        let queue = new Queue()
+        queue.enqueue(300)
+        queue.enqueue(400)
+        queue.enqueue(500)
+
+        queue.peek()
+        queue.size()
+        queue.isEmpty()
+        queue.dequeue()
+
+    </script>
+</body>
+</html>

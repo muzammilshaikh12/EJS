@@ -1,0 +1,59 @@
+
+
+form{
+     text-align: left;
+    border:1.5px solid tomato;
+    border-radius: 8px;
+    margin: 0 600px;
+    height: 475px;
+    background-color: white;
+
+  }
+
+  .wrapper{
+    margin: 0 7px ;
+  }
+
+  body{
+    background-image: url(image.png);
+  }
+
+  h2{
+    font-size: 25px;
+  }
+  h5{
+    font-size: 15px;
+  }
+
+input{
+   
+    height: 30px;
+    width: 680px;
+  
+}
+
+#date--input{
+    height: 30px;
+    width: 330px;
+}
+
+#submit--input{
+    background-color: rgba(255, 166, 0, 0.87);
+    border:transparent;
+    border-radius: 8px;
+    height: 40px;
+}
+
+/* 
+<style>
+    body {
+        background-image: url(C:\Users\muzam\OneDrive\Documents\New folder);
+    }
+    form {
+    text-align:center;
+    border:1.5px solid tomato;
+    border-radius: 6px;
+    margin-left: 500px;
+    margin-right: 500px;
+    } 
+</style> */
